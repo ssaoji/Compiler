@@ -24,6 +24,7 @@ public class Compiler {
                 }
                 else if(tokens[0].equals("subr")){
                     //do subr stuff
+                    writer.write("hi");
                 }
                 else if(tokens[0].equals("printi")){
                     //do printi stuff
@@ -44,6 +45,7 @@ public class Compiler {
                 }
                 else if(tokens[0].equals("pushi")){
                     //do pushi stuff
+                    writer.write("70 " + tokens[1] + " 146");
                 }
                 else if(tokens[0].equals("popm")){
                     //do popm stuff
