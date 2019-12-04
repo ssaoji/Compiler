@@ -1,9 +1,12 @@
 import java.io.*;
+import java.lang.*;
+
+import static java.lang.Integer.toBinaryString;
 
 public class Compiler {
     public static void main (String[] args) throws IOException {
         BufferedReader reader = null;
-        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt")); //might need a path
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.bin")); //might need a path
 
         try {
             reader = new BufferedReader(new FileReader("basics.txt"));
@@ -24,10 +27,11 @@ public class Compiler {
                 }
                 else if(tokens[0].equals("subr")){
                     //do subr stuff
-                    writer.write("hi");
+                    ///writer.write("hi");
                 }
                 else if(tokens[0].equals("printi")){
                     //do printi stuff
+                    writer.write(toBinaryString(146));
                 }
                 else if(tokens[0].equals("jmp")){
                     //do jmp stuff
@@ -45,7 +49,7 @@ public class Compiler {
                 }
                 else if(tokens[0].equals("pushi")){
                     //do pushi stuff
-                    writer.write("70 " + tokens[1] + " 146");
+                    //writer.write("70 " + tokens[1] + " 146");
                 }
                 else if(tokens[0].equals("popm")){
                     //do popm stuff
@@ -64,7 +68,7 @@ public class Compiler {
                 }
                 else if(tokens[0].equals("add")){
                     //do add stuff
-                    writer.write("100"); //I think this is right but IDK
+                    //writer.write("100"); //I think this is right but IDK
                 }
                 else if(tokens[0].equals("sub")){
                     //do sub stuff
