@@ -10,12 +10,9 @@ public class Compiler {
         OutputStream os = new FileOutputStream("output.smp");
 
         // Starts writing the bytes in it
-        byte[] result = new byte[4];
-        int i = 70;
-        result[0] = (byte) (i >> 24);
-        result[1] = (byte) (i >> 16);
-        result[2] = (byte) (i >> 8);
-        result[3] = (byte) (i /*>> 0*/);
+
+
+        byte[] result = toBytes(70);
 
         os.write(result);
         os.close();
@@ -92,8 +89,18 @@ public class Compiler {
                 }
             }
             //writer.close();
-        }catch(Exception e){
+        }catch(Exception e) {
             System.out.println("Exception thrown when reading file");
         }
     }
+
+    public static byte[] toBytes(int i) {
+        byte[] result = new byte[4];
+        result[0] = (byte) (i >> 24);
+        result[1] = (byte) (i >> 16);
+        result[2] = (byte) (i >> 8);
+        result[3] = (byte) (i /*>> 0*/);
+        return result;
+    }
+
 }
