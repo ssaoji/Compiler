@@ -3,6 +3,8 @@ import java.io.*;
 public class Compiler {
     public static void main (String[] args){
         BufferedReader reader = null;
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt")); //might need a path
+
         try {
             reader = new BufferedReader(new FileReader("basics.txt"));
             String line = reader.readLine();
@@ -14,6 +16,8 @@ public class Compiler {
 
                 if(tokens[0].equals("decl")) {
                     //do decl stuff
+                    writer.write("hi");
+
                 }
                 else if(tokens[0].equals("lab")){
                     //do lab stuff
@@ -58,6 +62,7 @@ public class Compiler {
                 }
                 else if(tokens[0].equals("add")){
                     //do add stuff
+                    writer.write("100"); //I think this is right but IDK
                 }
                 else if(tokens[0].equals("sub")){
                     //do sub stuff
@@ -69,6 +74,7 @@ public class Compiler {
                     //do div stuff
                 }
             }
+            writer.close();
         }catch(Exception e){
             System.out.println("Exception thrown when reading file");
         }
