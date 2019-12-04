@@ -1,12 +1,13 @@
 import java.io.*;
 import java.lang.*;
+import java.nio.Buffer;
 
-import static java.lang.Integer.toBinaryString;
 
 public class Compiler {
 
     public static void main (String[] args) throws IOException {
         BufferedReader reader = null;
+
         OutputStream os = new FileOutputStream("output.smp");
 
         // Starts writing the bytes in it
@@ -14,8 +15,6 @@ public class Compiler {
 
         byte[] result = toBytes(70);
 
-        os.write(result);
-        os.close();
         try {
             reader = new BufferedReader(new FileReader("basics.txt"));
             String line = reader.readLine();
@@ -36,10 +35,20 @@ public class Compiler {
                 else if(tokens[0].equals("subr")){
                     //do subr stuff
                     ///writer.write("hi");
+                    os.write(toBytes(70));
+                    os.write(toBytes(16));
+                    os.write(toBytes(70));
+                    os.write(toBytes(17));
+                    os.write(toBytes(70));
+                    os.write(toBytes(1));
+
                 }
                 else if(tokens[0].equals("printi")){
                     //do printi stuff
                     //writer.write(toBinaryString(146));
+                }
+                else if(tokens[0].equals("printv")){
+                    //do printv stuff
                 }
                 else if(tokens[0].equals("jmp")){
                     //do jmp stuff
@@ -58,6 +67,10 @@ public class Compiler {
                 else if(tokens[0].equals("pushi")){
                     //do pushi stuff
                     //writer.write("70 " + tokens[1] + " 146");
+                }
+                else if(tokens[0].equals("pushv")){
+                    //do pushv stuff
+
                 }
                 else if(tokens[0].equals("popm")){
                     //do popm stuff
