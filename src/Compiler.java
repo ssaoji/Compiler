@@ -4,10 +4,21 @@ import java.lang.*;
 import static java.lang.Integer.toBinaryString;
 
 public class Compiler {
+
     public static void main (String[] args) throws IOException {
         BufferedReader reader = null;
-        BufferedWriter writer = new BufferedWriter(new FileWriter("output.bin")); //might need a path
+        OutputStream os = new FileOutputStream("output.smp");
 
+        // Starts writing the bytes in it
+        byte[] result = new byte[4];
+        int i = 70;
+        result[0] = (byte) (i >> 24);
+        result[1] = (byte) (i >> 16);
+        result[2] = (byte) (i >> 8);
+        result[3] = (byte) (i /*>> 0*/);
+
+        os.write(result);
+        os.close();
         try {
             reader = new BufferedReader(new FileReader("basics.txt"));
             String line = reader.readLine();
@@ -19,7 +30,7 @@ public class Compiler {
 
                 if(tokens[0].equals("decl")) {
                     //do decl stuff
-                    writer.write("hi");
+                    //writer.write("hi");
 
                 }
                 else if(tokens[0].equals("lab")){
@@ -31,7 +42,7 @@ public class Compiler {
                 }
                 else if(tokens[0].equals("printi")){
                     //do printi stuff
-                    writer.write(toBinaryString(146));
+                    //writer.write(toBinaryString(146));
                 }
                 else if(tokens[0].equals("jmp")){
                     //do jmp stuff
@@ -80,7 +91,7 @@ public class Compiler {
                     //do div stuff
                 }
             }
-            writer.close();
+            //writer.close();
         }catch(Exception e){
             System.out.println("Exception thrown when reading file");
         }
