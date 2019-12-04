@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class Compiler {
-    public static void main (String[] args){
+    public static void main (String[] args) throws IOException {
         BufferedReader reader = null;
         BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt")); //might need a path
 
