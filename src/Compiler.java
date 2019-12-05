@@ -64,13 +64,16 @@ public class Compiler {
                     //do jmpc stuff
                 } else if (tokens[0].equals("cmpe")) {
                     //do cmpe stuff
+                    os.write((byte)(132))
 
                 }
                 else if(tokens[0].equals("cmplt")){
                     //do cmplt stuff
+                    os.write((byte)(136));
                 }
                 else if(tokens[0].equals("cmpgt")){
                     //do cmpgt stuff
+                    os.write((byte)(140));
                 }
                 else if(tokens[0].equals("pushi")){
                     //do pushi stuff
@@ -94,19 +97,23 @@ public class Compiler {
                 }
                 else if(tokens[0].equals("swp")){
                     //do swp stuff
+                    os.write((byte)(94));
                 }
                 else if(tokens[0].equals("add")){
                     //do add stuff
-                    //writer.write("100"); //I think this is right but IDK
+                    os.write((byte)(100));
                 }
                 else if(tokens[0].equals("sub")){
                     //do sub stuff
+                    os.write((byte)(104));
                 }
                 else if(tokens[0].equals("mul")){
                     //do mul stuff
+                    os.write((byte)(108));
                 }
                 else if(tokens[0].equals("div")){
                     //do div stuff
+                    os.write((byte)(112));
                 }
                 else if(tokens[0].equals("ret")){
                     os.write((byte)(70));
