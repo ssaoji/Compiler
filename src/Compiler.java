@@ -8,7 +8,7 @@ public class Compiler {
     public static void main (String[] args) throws IOException {
         BufferedReader reader = null;
 
-        OutputStream os = new FileOutputStream("output.smp");
+        OutputStream os = new FileOutputStream("Basics.bin");
 
         // Starts writing the bytes in it
 
@@ -24,6 +24,7 @@ public class Compiler {
                 System.out.println(tokens[0]);
                 line = reader.readLine();
 
+
                 if(tokens[0].equals("decl")) {
                     //do decl stuff
                     //writer.write("hi");
@@ -35,17 +36,23 @@ public class Compiler {
                 else if(tokens[0].equals("subr")){
                     //do subr stuff
                     ///writer.write("hi");
-                    os.write(toBytes(70));
+                    os.write((byte)(70));
                     os.write(toBytes(16));
-                    os.write(toBytes(70));
+                    os.write((byte)(70));
                     os.write(toBytes(17));
-                    os.write(toBytes(70));
+                    os.write((byte)(70));
                     os.write(toBytes(1));
+                    os.write((byte)(44));
+                    os.write((byte)(0));
 
                 }
                 else if(tokens[0].equals("printi")){
                     //do printi stuff
                     //writer.write(toBinaryString(146));
+                    os.write((byte)(70));
+                    os.write(toBytes(Integer.parseInt(tokens[1])));
+                    os.write((byte)(146));
+                    //os.write(toBytes(Integer.parseInt(tokens[1])));
                 }
                 else if(tokens[0].equals("printv")){
                     //do printv stuff
@@ -57,6 +64,7 @@ public class Compiler {
                     //do jmpc stuff
                 } else if (tokens[0].equals("cmpe")) {
                     //do cmpe stuff
+
                 }
                 else if(tokens[0].equals("cmplt")){
                     //do cmplt stuff
@@ -100,6 +108,12 @@ public class Compiler {
                 else if(tokens[0].equals("div")){
                     //do div stuff
                 }
+                else if(tokens[0].equals("ret")){
+                    os.write((byte)(70));
+                    os.write(toBytes(0));
+                    os.write((byte)(77));
+                    os.write((byte)(48));
+                }
             }
             //writer.close();
         }catch(Exception e) {
@@ -109,10 +123,10 @@ public class Compiler {
 
     public static byte[] toBytes(int i) {
         byte[] result = new byte[4];
-        result[0] = (byte) (i >> 24);
-        result[1] = (byte) (i >> 16);
-        result[2] = (byte) (i >> 8);
-        result[3] = (byte) (i /*>> 0*/);
+        result[3] = (byte) (i >> 24);
+        result[2] = (byte) (i >> 16);
+        result[1] = (byte) (i >> 8);
+        result[0] = (byte) (i /*>> 0*/);
         return result;
     }
 
