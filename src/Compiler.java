@@ -144,6 +144,13 @@ public class Compiler {
             System.out.println("Exception thrown when reading file");
         }
         os.close();
+        /*
+        byte[] bytes = {(byte)0, (byte)0, (byte)15, (byte)164};
+        int result = fromByteArray(bytes);
+        System.out.println(result);
+         */
+
+
     }
 
     public static byte[] toBytes(int i) {
@@ -154,5 +161,13 @@ public class Compiler {
         result[0] = (byte) (i /*>> 0*/);
         return result;
     }
+    /*
+    public static int fromByteArray(byte[] bytes) {
+        return ((bytes[0] & 0xFF) << 24) |
+                ((bytes[1] & 0xFF) << 16) |
+                ((bytes[2] & 0xFF) << 8 ) |
+                ((bytes[3] & 0xFF) << 0 );
+    }
+     */
 
 }
