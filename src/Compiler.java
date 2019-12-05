@@ -1,6 +1,7 @@
 import java.io.*;
 import java.lang.*;
 import java.nio.Buffer;
+import java.util.*;
 
 
 public class Compiler {
@@ -8,7 +9,7 @@ public class Compiler {
     public static void main (String[] args) throws IOException {
         BufferedReader reader = null;
         OutputStream os = new FileOutputStream("Basics.bin");
-        Map<String, Integer> symbol_table;
+        Map<String, Integer> symbol_table = null;
 
         // Starts writing the bytes in it
 
@@ -27,7 +28,7 @@ public class Compiler {
 
                 if(tokens[0].equals("decl")) {
                     //do decl stuff
-                    //writer.write("hi");
+                    symbol_table.put(tokens[1], 0);
 
                 }
                 else if(tokens[0].equals("lab")){
