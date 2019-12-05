@@ -64,7 +64,7 @@ public class Compiler {
                     //do jmpc stuff
                 } else if (tokens[0].equals("cmpe")) {
                     //do cmpe stuff
-                    os.write((byte)(132))
+                    os.write((byte)(132));
 
                 }
                 else if(tokens[0].equals("cmplt")){
@@ -85,6 +85,9 @@ public class Compiler {
                 }
                 else if(tokens[0].equals("popm")){
                     //do popm stuff
+                    os.write((byte)(70));
+                    os.write(toBytes(Integer.parseInt(tokens[1])));
+                    os.write((byte)(76));
                 }
                 else if(tokens[0].equals("popv")){
                     //do popv stuff
