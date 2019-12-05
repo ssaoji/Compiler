@@ -10,6 +10,7 @@ public class Compiler {
         BufferedReader reader = null;
         OutputStream os = new FileOutputStream("Basics.bin");
         Map<String, Integer> symbol_table = null;
+        int decl_offset = 0;
 
         // Starts writing the bytes in it
 
@@ -28,8 +29,9 @@ public class Compiler {
 
                 if(tokens[0].equals("decl")) {
                     //do decl stuff
-                    symbol_table.put(tokens[1], 0);
-
+                    symbol_table.put("main"+tokens[1], decl_offset++);
+                    os.write((byte)(70));
+                    os.write(toBytes(0));
                 }
                 else if(tokens[0].equals("lab")){
                     //do lab stuff
