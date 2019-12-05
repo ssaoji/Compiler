@@ -7,8 +7,8 @@ public class Compiler {
 
     public static void main (String[] args) throws IOException {
         BufferedReader reader = null;
-
         OutputStream os = new FileOutputStream("Basics.bin");
+        Map<String, Integer> symbol_table;
 
         // Starts writing the bytes in it
 
